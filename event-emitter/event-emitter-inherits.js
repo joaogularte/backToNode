@@ -1,6 +1,6 @@
-//"use strict"
+"use strict";
 
-var util = require('util');
+let util = require('util');
 var eventEmitter = require('events').EventEmitter;
 var fs = require('fs');
 
@@ -30,7 +30,7 @@ InputChecker.prototype.check = function(input ){
     }
 }
 
-inputCheck = new InputChecker("João", "saida");
+var inputCheck = new InputChecker("João", "saida");
 
 inputCheck.on('write', function(data){
     this.writeStream.write(data, 'utf8');
@@ -47,6 +47,7 @@ inputCheck.on('end', function(){
 
 process.stdin.setEncoding('utf8');
 process.stdin.on('readable', function(){
+    console.log("Escreva algo: ");
     var input = process.stdin.read();
     if(input !== null){
         inputCheck.check(input);
